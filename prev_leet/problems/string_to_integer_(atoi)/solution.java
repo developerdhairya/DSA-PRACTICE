@@ -29,7 +29,6 @@ class Solution {
 
        
 
-
         try {
             Integer sol =sign*Integer.parseInt(str.substring(startIndex, endIndex));
             return sol;
