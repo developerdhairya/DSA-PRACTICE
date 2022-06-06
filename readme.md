@@ -12,9 +12,7 @@ All the questions provided here are open source and  I in any manner do not aim 
  
 ## Lets Get Started
 
-> ### Arrays
-
-                                                            
+> ### Arrays                                                    
 - [Swap Alternate]()
 - [Find Unique]()
 - [Find Duplicate]()
@@ -36,11 +34,7 @@ All the questions provided here are open source and  I in any manner do not aim 
 - [Split Array]()
 
 
-
-
 > ### Matrix
-
-
 - [Total Sum on the Boundaries and Diagonals]() 
 - [Print Like a Wave]()
 - [Print Spiral]() 
@@ -48,9 +42,7 @@ All the questions provided here are open source and  I in any manner do not aim 
 - [Largest Row or Column]()
 - [Matrix Multiplication]()
 
-
 > ### Recursion
-
 - [All Indices of Number]()
 - [Check Palindrome (Recursive)]()
 - [String to Integer]()
@@ -66,7 +58,6 @@ All the questions provided here are open source and  I in any manner do not aim 
 
 
 > ### Linked List
-
 - [AppendLastNToFirst]()
 - [Reverse LL]()
 - [PalindromeLL]()
@@ -75,7 +66,6 @@ All the questions provided here are open source and  I in any manner do not aim 
 
 
 > ### Stacks
-
 - [Balanced Parenthesis]()
 - [Check redundant brackets]()
 - [Stock Span]()
