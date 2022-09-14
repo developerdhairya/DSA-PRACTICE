@@ -10,11 +10,9 @@ class Solution {
         int profit=0;
         int i=0;
         while(i<n){
-            if(i==0){
-                if(arr[0]<arr[1]){
-                    cp=arr[0];
-                    hold=true;
-                }
+            if(i==0 && arr[0]<arr[1]){
+                cp=arr[0];
+                hold=true;
             }else if(i==n-1){
                 if(hold){
                     profit+=arr[i]-cp;
