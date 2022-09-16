@@ -1,0 +1,8 @@
+1.Maximum of all subarrays of size K using Max-Heap/Deque:
+
+Naive approach(without heap)- TC=>O(N*k)
+Optimal approach(with heap)- TC=>O(N) SC=>O(k)
+
+2. Sum of maximum and minimum elements in subarray of size k using (Max-Heap + Min-Heap)/Deque
+
+Same as above
