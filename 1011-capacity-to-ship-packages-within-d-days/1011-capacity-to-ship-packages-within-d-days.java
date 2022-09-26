@@ -4,9 +4,9 @@ class Solution {
         int output=1;
         int currsum=0;
         for(int ele:arr){
-            // if(ele>mid){
-            //     return Integer.MAX_VALUE;
-            // }
+            if(ele>mid){
+                return Integer.MAX_VALUE;
+            }
             currsum+=ele;
             if(currsum>mid){
                 currsum=ele;
@@ -23,9 +23,9 @@ class Solution {
         }
         
         int start=0;
-        for(int ele:arr){
-            start=Math.max(ele,start);
-        }
+        // for(int ele:arr){
+        //     start=Math.max(ele,start);
+        // }
         int end=0;
         for(int ele:arr){
             end+=ele;
