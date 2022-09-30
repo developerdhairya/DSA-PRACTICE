@@ -26,15 +26,13 @@ class Solution {
         ListNode tempHead=curr;
         prev=null;
         while(i<right+1){
-            if(i==right){
-                tempPrev.next=curr;
-            }
             ListNode temp=curr.next;
             curr.next=prev;
             prev=curr;
             curr=temp;
             i++;
         }
+        tempPrev.next=prev;
         tempHead.next=curr;
         return dummy.next;
     }
