@@ -2,7 +2,6 @@ class Solution {
     static boolean[] visited;
     public boolean validPath(int vcount, int[][] edges, int source, int dest) {
         visited=new boolean[vcount];
-        
         int ecount=edges.length;
         // building graph
         ArrayList<Edge>[] graph=new ArrayList[vcount];
@@ -23,15 +22,14 @@ class Solution {
     }
     
     public boolean hasPath(ArrayList<Edge>[] graph,int source,int dest){
-         if(source==dest){
-             return true;
-         }
+        if(source==dest){
+            return true;
+        }
         if(visited[source]){
             return false;
         }else{
             visited[source]=true;
         }
-        
         
         for(Edge edge:graph[source]){
             if(hasPath(graph,edge.nbr,dest)){
