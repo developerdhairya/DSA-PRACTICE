@@ -26,12 +26,14 @@ class Solution {
          if(source==dest){
              return true;
          }
-        visited[source]=true;
+        if(visited[source]){
+            return false;
+        }else{
+            visited[source]=true;
+        }
+        
         
         for(Edge edge:graph[source]){
-            if(visited[edge.nbr]){
-                continue;
-            }
             if(hasPath(graph,edge.nbr,dest)){
                 return true;
             }
