@@ -3,13 +3,12 @@ class Solution {
         int V=adjList.length;
         int[] colored=new int[V];
         Arrays.fill(colored,-1);
-        boolean[] visited=new boolean[adjList.length];
         boolean ans=true;
         for(int i=0;i<adjList.length;i++){
             if(colored[i]!=-1){
                 continue;
             }
-            ans&=canColor(adjList,colored,i,0,visited);
+            ans&=canColor(adjList,colored,i,0);
             if(!ans){
                 return false;
             }
@@ -17,9 +16,8 @@ class Solution {
         return true;
     }
     
-    public boolean canColor(int[][] adjList,int[] colored,int v,int c,boolean[] visited){
-        
-        visited[v]=true;
+    public boolean canColor(int[][] adjList,int[] colored,int v,int c){
+
         
         if(colored[v]==c){
             return true;
@@ -33,7 +31,7 @@ class Solution {
         
         
         for(int j=0;j<adjList[v].length;j++){
-            output&=canColor(adjList,colored,adjList[v][j],1-c,visited);
+            output&=canColor(adjList,colored,adjList[v][j],1-c);
             if(!output){
                 return false;
             }
