@@ -5,10 +5,9 @@ class Solution {
         Arrays.fill(colored,-1);
         boolean ans=true;
         for(int i=0;i<adjList.length;i++){
-            if(colored[i]!=-1){
-                continue;
+            if(colored[i]==-1){
+                ans&=canColor(adjList,colored,i,0);
             }
-            ans&=canColor(adjList,colored,i,0);
             if(!ans){
                 return false;
             }
