@@ -6,7 +6,9 @@ class Solution {
         boolean[] visited=new boolean[adjList.length];
         boolean ans=true;
         for(int i=0;i<adjList.length;i++){
-            Arrays.fill(colored,-1);
+            if(visited[i]){
+                continue;
+            }
             ans&=canColor(adjList,colored,i,0,visited);
             if(!ans){
                 return false;
