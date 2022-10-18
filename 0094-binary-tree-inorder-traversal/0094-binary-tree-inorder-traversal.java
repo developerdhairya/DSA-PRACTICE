@@ -18,20 +18,20 @@ class Solution {
         List<Integer> output=new ArrayList<>();
         TreeNode curr=root;
         while(curr!=null){
-            TreeNode temp=curr.left;
-            if(temp==null){
+            TreeNode pre=curr.left;
+            if(pre==null){
                 output.add(curr.val);
                 curr=curr.right;
                 continue;
             }
-            while(temp.right!=null && temp.right!=curr){
-                temp=temp.right;
+            while(pre.right!=null && pre.right!=curr){
+                pre=pre.right;
             }
-            if(temp.right==null){
-                temp.right=curr;
+            if(pre.right==null){
+                pre.right=curr;
                 curr=curr.left;
-            }else if(temp.right==curr){
-                temp.right=null;
+            }else if(pre.right==curr){
+                pre.right=null;
                 output.add(curr.val);
                 curr=curr.right;
             }
