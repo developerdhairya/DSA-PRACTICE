@@ -5,7 +5,8 @@ class Solution {
         for(int[] arr:dp){
             Arrays.fill(arr,-1);
         }
-        return helper(n,k,target,dp);
+        int sol=helper(n,k,target,dp);
+        return (int)sol;
     }
     
     public int helper(int n, int k, int target,int[][] dp) {
@@ -20,7 +21,7 @@ class Solution {
         }
         int output=0;
         for(int i=1;i<=k;i++){
-            output=(output+helper(n-1,k,target-i,dp))%1000000007;
+            output=(output+(helper(n-1,k,target-i,dp)))%1000000007;
         }
         dp[n][target]=output;
         return output;
