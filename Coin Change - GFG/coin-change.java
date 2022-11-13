@@ -25,15 +25,29 @@ class GfG {
 // User function Template for Java
 
 class Solution {
+
     public long count(int arr[], int N, int sum) {
-        long[] tab=new long[sum+1];
-        tab[0]=1;
-        for(int ele:arr){
-            for(int i=0;i<sum+1;i++){
-                if(i-ele>=0)
-                    tab[i]+=tab[i-ele];
+         Long[][] dp=new Long[N+1][sum+1];
+         return f(arr,0,sum,dp);
+         
+    }
+    
+    public long f(int[] arr,int indx,int sum,Long[][] dp){
+        if(sum==0) return 1;
+        if(sum<0 || indx>=arr.length)  return 0;
+        long res=0;
+        for(int i=indx;i<arr.length;i++){
+            if(sum-arr[i]<0){
+                continue;
+            }
+            if(dp[i][sum-arr[i]]!=null){
+                res+=dp[i][sum-arr[i]];
+            }else{
+                long o=f(arr,i,sum-arr[i],dp);
+                dp[i][sum-arr[i]]=o;
+                res+=o;
             }
         }
-        return tab[sum];
+        return res;
     }
 }
