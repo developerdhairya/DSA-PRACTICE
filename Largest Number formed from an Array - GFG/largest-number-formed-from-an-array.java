@@ -28,25 +28,19 @@ public class Main {
 
 class Solution {
     
-    // class helper<String> implements 
-    // }
-    
-    
-    String printLargest(String[] arr) {
-        ArrayList<String> h=new ArrayList<String>();
-        for(String ele:arr){
-            h.add(ele);
-        }
-        Collections.sort(h,new Comparator<String>(){
+    class helper implements Comparator<String>{
         @Override
         public int compare(String n1,String n2){
             String c1=n1+n2;
             String c2=n2+n1;
             return -1*c1.compareTo(c2);
         }}
-        );
+    
+    
+    String printLargest(String[] arr) {
+        Arrays.sort(arr,new helper());
         String output="";
-        for(String ele:h){
+        for(String ele:arr){
             output+=ele;
         }
         return output;
