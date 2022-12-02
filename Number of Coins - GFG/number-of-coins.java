@@ -29,31 +29,33 @@ class Solution{
 	public int minCoins(int coins[], int M, int k) 
 	{ 
 	    Integer[] dp=new Integer[k+1];
-	    int output=f(coins,k,dp);
-	    if(output==Integer.MAX_VALUE) return -1;
+	    Integer output=f(coins,k,dp);
+	    if(output==null) return -1;
 	    return output;
 	} 
 	
-	public int f(int[] coins,int k,Integer[] dp){
+	public Integer f(int[] coins,int k,Integer[] dp){
 	    if(k==0) return 0;
 	    if(k<0) return Integer.MAX_VALUE;
-	    int output=Integer.MAX_VALUE;
+	    Integer output=Integer.MAX_VALUE;
 	    
 	    for(int i=0;i<coins.length;i++){
 	        if(k-coins[i]<0) continue;
-	        int temp;
+	        Integer temp;
 	        if(dp[k-coins[i]]==null){
 	            temp=f(coins,k-coins[i],dp);
 	            dp[k-coins[i]]=temp;
 	         }else{
 	            temp=dp[k-coins[i]];
-	         }     
-	        if(temp!=Integer.MAX_VALUE){
-	            output=Math.min(output,temp+1);
-	        } 
+	         }
+	         if(temp!=null){
+	             output=Math.min(output,temp);
+	         }
+	       
 	    }
 	    
-	    return output;
+	    
+	    return output==Integer.MAX_VALUE?null:output+1;
 	    
 	}
 	
