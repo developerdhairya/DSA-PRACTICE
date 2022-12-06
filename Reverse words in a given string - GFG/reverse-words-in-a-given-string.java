@@ -25,7 +25,7 @@ class Solution
     //Function to reverse words in a given string.
     String reverseWords(String S)
     {
-        String[] temp=S.split("[.]");
+        String[] temp=S.split("\\.");
         Collections.reverse(Arrays.asList(temp));
         String out="";
         for(String ele:temp){
