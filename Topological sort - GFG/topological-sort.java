@@ -63,28 +63,30 @@ class Solution
     //Function to return list containing vertices in Topological order. 
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
-        int[] inDeg=new int[V];
-        for(ArrayList<Integer> list:adj){
-            for(int ele:list){
-                inDeg[ele]++;
-            }
+        Stack<Integer> st=new Stack<>();
+        boolean[] visited=new boolean[V];
+        for(int i=0;i<V;i++){
+            util(i,adj,st,visited);
         }
-        int[] output=new int[V];
+        // if(st.size()!=V) return null;
+        int[] out=new int[V];
         int c=0;
-        Queue<Integer> q=new ArrayDeque<>();
-        for(int i=0;i<inDeg.length;i++){
-            if(inDeg[i]==0) q.add(i); 
+        while(!st.isEmpty()){
+            out[c++]=st.pop();
         }
-        while(!q.isEmpty()){
-            int front=q.remove();
-            output[c++]=front;
-            for(int ele:adj.get(front)){
-                inDeg[ele]--;
-                if(inDeg[ele]==0) q.add(ele);
-            }
-        }
-        return output;
-        
-        
+        return out;
     }
+    
+    static void util(int v,ArrayList<ArrayList<Integer>> adj,Stack<Integer> st,boolean[] visited){
+        
+        if(visited[v]) return;
+        
+        for(int ele:adj.get(v)){
+            util(ele,adj,st,visited);
+        }
+        visited[v]=true;
+        st.push(v);
+        
+    } 
+    
 }
