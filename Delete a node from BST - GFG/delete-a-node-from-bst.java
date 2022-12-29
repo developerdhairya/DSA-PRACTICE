@@ -110,49 +110,59 @@ class GfG {
 
 class Tree {
     // Function to delete a node from BST.
-    public static Node deleteNode(Node root, int k) {
-        if(root==null) return null;
-        if(root.data==k) return delete(root);
+    // public static Node deleteNode(Node root, int X) {
+    //     // code here.
+    // }
+    
+     public static Node deleteNode(Node root,int k){
         Node curr=root;
         while(curr!=null){
             if(k<curr.data){
-                if(curr.left!=null && curr.left.data==k){
-                    curr.left=delete(curr.left);
+                Node temp=curr.left;
+                if(temp!=null && temp.data==k){
+                    curr.left=del(temp);
                     break;
                 }else{
-                    curr=curr.left;
+                    curr=temp;
+                }
+            }else if(k>curr.data){
+                Node temp=curr.right;
+                if(temp!=null && temp.data==k){
+                    curr.right=del(temp);
+                    break;
+                }else{
+                    curr=temp;
                 }
             }else{
-                if(curr.right!=null && curr.right.data==k){
-                    curr.right=delete(curr.right);
-                    break;
-                }else{
-                    curr=curr.right;
-                }
+                root=del(curr);
+                break;
             }
         }
         return root;
     }
-    
-    public static Node delete(Node node){
+
+    private static Node del(Node node){
         if(node.left==null){
             return node.right;
         }else if(node.right==null){
             return node.left;
         }else{
-            Node rc=rightmost(node.left);
-            rc.right=node.right;
+            Node right=node.right;
+            Node rightmost=getRightmost(node.left);
+            rightmost.right=right;
             return node.left;
         }
     }
-    
-    public static Node rightmost(Node node){
-        if(node==null) return null;
-        while(node.right!=null){
-            node=node.right;
+
+    private static Node getRightmost(Node node){
+        Node curr=node;
+        while(curr.right!=null){
+            curr=curr.right;
         }
-        return node;
+        return curr;
     }
+
+    
     
     
 }
