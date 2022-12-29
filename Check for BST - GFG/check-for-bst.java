@@ -126,7 +126,7 @@ public class Solution
 
     boolean checkBSTHelper(Node root,int min,int max){
         if(root==null) return true;
-        if(root.data>max || root.data<=min) return false;
+        if(root.data>max || root.data<min) return false;
         return checkBSTHelper(root.left, min, root.data) && checkBSTHelper(root.right, root.data, max);
     }
     
