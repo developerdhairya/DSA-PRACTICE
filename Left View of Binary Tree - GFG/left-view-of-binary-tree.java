@@ -123,27 +123,24 @@ class Node
 class Tree
 {
     //Function to return list containing elements of left view of binary tree.
-    ArrayList<Integer> leftView(Node root){
-      Queue<Node> queue=new ArrayDeque<>();
-      ArrayList<Integer> output=new ArrayList<>();
-      if(root!=null)
-        queue.add(root);
-    //   output.add(root.data);
-      while(!queue.isEmpty()){
-          int n=queue.size();
-          for(int i=0;i<n;i++){
-            Node front=queue.remove();
-            if(i==0){
-                output.add(front.data);
-            }
-            if(front.left!=null){
-                queue.add(front.left);
-            }
-            if(front.right!=null){
-                queue.add(front.right);
-            }
+    ArrayList<Integer> leftView(Node root)
+    {
+      ArrayList<Integer> out=new ArrayList<Integer>();
+      if(root==null) return out;
+      Queue<Node> q=new ArrayDeque<>();
+      q.add(root);
+      while(!q.isEmpty()){
+          int size=q.size();
+          Node f=q.remove();
+          out.add(f.data);
+          if(f.left!=null) q.add(f.left);
+          if(f.right!=null) q.add(f.right);
+          for(int i=1;i<size;i++){
+              Node front=q.remove();
+              if(front.left!=null) q.add(front.left);
+              if(front.right!=null) q.add(front.right);
           }
       }
-      return output;
+      return out;
     }
 }
