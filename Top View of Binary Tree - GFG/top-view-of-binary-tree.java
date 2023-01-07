@@ -126,13 +126,7 @@ class Node{
 
 class Solution
 {
-    //Function to return a list of nodes visible from the top view 
-    //from left to right in Binary Tree.
-    
-    
-    static ArrayList<Integer> topView(Node root)
-    {
-        class Unit{
+    static class Unit{
         Node node;
         int d;
         Unit(Node node,int d){
@@ -141,8 +135,11 @@ class Solution
         }
     }
     
+    
+    static ArrayList<Integer> topView(Node root){
+       ArrayList<Integer> out=new ArrayList<>();
+        TreeMap<Integer,Integer> map=new TreeMap<>();
         Queue<Unit> q=new ArrayDeque<>();
-        Map<Integer,Integer> map=new HashMap<>();
         q.add(new Unit(root,0));
         map.put(0,root.data);
         while(!q.isEmpty()){
@@ -156,16 +153,9 @@ class Solution
                 map.putIfAbsent(front.d+1,front.node.right.data);
             }
         }
-        ArrayList<Integer> output=new ArrayList<>();
-        ArrayList<Integer> keys=new ArrayList<>();
         for(int ele:map.keySet()){
-            keys.add(ele);
+            out.add(map.get(ele));
         }
-        Collections.sort(keys);
-        for(int ele:keys){
-            output.add(map.get(ele));
-        }
-        return output;
-        
+        return out;
     }
 }
