@@ -50,14 +50,14 @@ class Compute {
         ArrayDeque<Integer> dq = new ArrayDeque<>(k);
         long[] out = new long[N-k+1];
         int c=0;
-        for(int i=0;i<k-1;i++){
+        for(int i=0;i<k;i++){
             if(arr[i]<0){
                 dq.addLast(i);
             }
         }
         for(int i=0;i<N-k+1;i++){
             while(!dq.isEmpty() && dq.peekFirst()<i) dq.removeFirst();
-            if(arr[i+k-1]<0 ) dq.addLast(i+k-1);
+            if(arr[i+k-1]<0 && i+k-1>=k ) dq.addLast(i+k-1);
             out[c++]=dq.isEmpty()?0:arr[dq.peekFirst()];
         }
         return out;
